@@ -1,0 +1,51 @@
+.number {
+    @include bg($third-color);
+    &-list {
+        @include flexBox()
+    }
+    &-item {
+        padding: 8.5rem 3.5rem;
+        color: #fff;
+        border-left: 1px solid rgba($color: #fff, $alpha: 0.5);
+        text-align: center;
+        text-transform: uppercase;
+        width: calc(100% / 5);
+    }
+    &-item:last-child {
+        border-right: 1px solid rgba($color: #fff, $alpha: 0.5);
+    }
+    &-item-count {
+        font: {
+            size: clamp(5rem, 6vw, 7.2rem);
+            weight: bold;
+        }
+        margin-bottom: 2rem;
+    }
+    &-item-text {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+    @include maxWidth(1023px) {
+        &-item {
+            padding: 5rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+    @include maxWidth(767px) {
+        &-list {
+            display: block;
+        }
+        &-item {
+            width: 100%;
+            padding: 2.5rem 1.5rem;
+        }
+        &-item:not(:last-child) {
+            border-bottom: 1px solid rgba($color: #fff, $alpha: 0.5);
+        }
+        &-item:not(:nth-child(999)) {
+            border-left: 0;
+            border-right: 0;
+        }    
+        
+    }
+}

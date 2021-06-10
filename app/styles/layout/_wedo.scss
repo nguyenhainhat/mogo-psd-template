@@ -1,0 +1,90 @@
+.wedo {
+    padding: 10rem 0;
+    // &-container {
+    //     @include flexBox(stretch, space-between);
+    // }
+    // &-content,
+    // &-img {
+    //     width: calc(50% - 1.5rem);
+    // }
+    &-img {
+        object-fit: cover;
+    }
+    &-item {
+        overflow: hidden;
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        &-inner {
+            overflow: hidden
+        }
+        &-header {
+            @include flexBox(center);
+            padding: 1.5rem;
+            border: 2px solid $gray-light-color;
+            cursor: pointer;
+        }
+        &-icon {
+            margin-right: 1.5rem;
+        }
+        &-title {
+            text-transform: uppercase;
+            font-weight: bold;
+            @include textClamp;
+            padding-right: 2rem;
+        }
+        &-arrow {
+            margin-left: auto;
+            color: $gray-dark-color;
+            font-size: 3rem;
+        }
+        &-content {
+            padding: 2rem;
+            border: 2px solid $gray-light-color;
+            border-top: 0;
+            font-size: 1.5rem;
+            font-family: $secondary-font;
+            font-style: italic;
+            font-weight: 100;
+            line-height: 1.6;
+            color: $text-color;
+            display: none;
+        }
+        &.is-active &-content {
+            display: block;
+        }
+        &-text {
+            padding-right: 2rem;
+            height: 14rem;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $gray-light-color;
+                border-radius: 2rem;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $third-color;
+                border-radius: 2rem;
+            }
+        }
+    }
+    @include minWidth(768px) {
+        &-container { 
+            @include flexBox(stretch, space-between);
+        }
+        &-content,
+        &-img {
+            width: calc(50% - 1.5rem);
+        }
+    }
+    @include maxWidth(767px) {
+        padding: 5rem;
+        &-img {
+            margin-bottom: 2rem;
+        }
+    }
+}

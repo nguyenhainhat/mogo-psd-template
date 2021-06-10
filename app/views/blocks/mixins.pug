@@ -1,0 +1,149 @@
+mixin listItemHeader(data)
+    li.header-menu-item
+        if data.icon
+            a.header-menu-icon(href= data.href) 
+                if data.icon == 'cart'
+                    i.fa.fa-shopping-cart
+                else
+                    i.fa.fa-search
+        else 
+            a.header-menu-link(href= data.href)= data.content 
+
+mixin bottomItemHeader(data)
+    if data.number == '01'
+        .header-bottom-item.is-active
+            span.header-bottom-number= data.number 
+            span.header-bottom-text= data.text
+    else 
+        .header-bottom-item
+            span.header-bottom-number= data.number 
+            span.header-bottom-text= data.text
+
+mixin blockSection(data)
+    .block-section
+        h3.block-section-caption= data.caption 
+        h2.block-section-heading= data.title 
+        if data.desc
+            p.block-section-desc= data.desc
+
+mixin aboutItem(data) 
+    .about-item 
+        img.about-image(src= data.img, alt= data.alt)
+        .about-content
+            i.about-icon(class= data.icon)
+            span.about-title= data.title 
+
+mixin numberItem(number, title)
+    .number-item 
+        h4.number-item-count= number
+        span.number-item-text= title
+
+mixin serviceItem(img, title, desc)
+    .service-item 
+        img.service-item-icon(src= img)
+        .service-item-info 
+            h3.service-item-title= title
+            p.service-item-desc= desc
+
+mixin wedoItem(active = "", img, title, desc)
+    .wedo-item(class= active) 
+        .wedo-item-header 
+            img(src= img).wedo-item-icon
+            h3.wedo-item-title= title 
+            if active == 'is-active'
+                i.fa.fa-angle-down.wedo-item-arrow
+            else 
+                i.fa.fa-angle-up.wedo-item-arrow
+        .wedo-item-inner 
+            .wedo-item-content 
+                .wedo-item-text= desc 
+
+mixin quoteItem(img, author, idClone, desc= "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.")
+    if idClone
+        .quote-content(id= idClone)
+            .quote-icon 
+                img(src= img)
+            .quote-info 
+                p.quote-desc= desc
+                span.quote-author= author
+    else 
+        .quote-content
+            .quote-icon 
+                img(src= img)
+            .quote-info 
+                p.quote-desc= desc
+                span.quote-author= author
+
+mixin teamSocial(facebook= "#", twitter= "#", pinterest= "#", instagram= "#")
+    ul.team-social 
+        li.team-social-item 
+            a.team-social-link(href= facebook) 
+                i.fab.fa-facebook-f
+        li.team-social-item 
+            a.team-social-link(href= twitter)
+                i.fab.fa-twitter
+        li.team-social-item 
+            a.team-social-link(href= pinterest)
+                i.fab.fa-pinterest
+        li.team-social-item 
+            a.team-social-link(href= instagram)
+                i.fab.fa-instagram
+
+mixin teamItem(img, name, position) 
+    .team-item 
+        .team-main 
+            img(src= img).team-img
+            .team-content 
+                if block 
+                    block
+                    //- chen noi dung
+        .team-info 
+            h3.team-name= name
+            span.team-position= position
+
+mixin workItem(img, icon= "fa fa-tree", classFull = "", title= "Creatively Designed", desc= "Lorem ipsum dolor sit amet")
+
+    .work-item(class= classFull) 
+        img.work-img(src= img)
+        .work-content 
+            .work-icon(class= icon)
+            h3.work-title= title
+            span.work-desc.text.text-light= desc
+
+mixin peopleItem(img, name, job, desc)
+    li.people-item 
+        img.people-avt(src= img)
+        .people-info 
+            h3.people-name= name
+            span.people-job.text.text-light= job
+            p.people-desc.text= desc
+
+mixin storyItem(img, dateNumber, dateText, view, comment, title = "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." , desc = "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." )
+    li.story-item 
+        .story-media
+            img.story-img(src= img)
+            .story-date
+                span.story-date-number= dateNumber
+                span.story-date-text.text.text-light= dateText
+        .story-content
+            h3.story-title= title
+            .story-desc.text 
+                p.story-desc-inner= desc 
+            .story-meta 
+                .story-meta-item 
+                    i.fa.fa-eye.story-meta-icon 
+                    span.story-meta-number.text.text-light 542
+                .story-meta-item 
+                    i.fa.fa-comment.story-meta-icon 
+                    span.story-meta-number.text.text-light 17
+
+mixin footerBlogsItem(img, title, date= "Jan 9, 2016", href= "#!")
+    a(href= href).footer-blog 
+        img.footer-blog-img(src= img)
+        .footer-blog-info
+            h4.footer-blog-title= title
+            span.footer-blog-date.text.text-light= date  
+
+mixin footerImgItem(img)
+    .footer-img-item 
+        img(src= img)

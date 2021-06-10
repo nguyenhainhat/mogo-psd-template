@@ -1,0 +1,130 @@
+.quote {
+    padding: 6.5rem 0;
+    @include bg($gray-color);
+    &-container {
+        position: relative;
+        @include flexBox(center, space-between);
+    }
+    &-carousel {
+        width: 100%;
+        overflow: hidden;
+    }
+    &-slider {
+        min-width: calc(1200px * 5);
+        @include flexBox;
+        overflow-y: hidden;
+    }
+    &-arrow {
+        color: $gray-dark-color;
+        cursor: pointer;
+        font-size: 3rem;
+        padding: 1rem 2rem;
+        position: absolute;
+        &-left {
+            left: 0;
+        }
+        &-right {
+            right: 0;
+        }
+    }
+    &-content {
+        width: 100%;
+        padding-left: 5.5rem;
+        padding-right: 5.5rem;
+        @include flexBox(center);
+    }
+    &-icon {
+        @include size(15rem, 15rem);
+        @include flexBox(center, center);
+        border: 3px solid $third-color;
+        // gian dan khong bi co lai
+        flex-shrink: 0;
+        border-radius: 50%;
+        img {
+            border-radius: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &-info {
+        padding-left: 6rem;
+    }
+    &-desc {
+        font: {
+            size: 2.4rem;
+            weight: 300;
+            style: italic;
+            family: $secondary-font;
+        }
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        color: $text-color;
+        @include textClamp(3);
+    }
+    &-author {
+        position: relative;
+        font: {
+            family: $third-font;
+            size: 2.4rem;
+        }
+        padding-left: 7rem;
+        &::before {
+            content: "";
+            @include positionCenter("top");
+            @include size(6rem, 4px);
+            @include bg($primary-color);
+            left: 15%;
+        }
+    }
+    @include maxWidth(1023px) {
+        &-icon {
+            @include size(12rem, 12rem);
+        }
+        &-info {
+            padding-left: 0;
+        }
+        &-desc {
+            width: 55%;
+            padding: 0 2rem;
+            // @include textClamp();
+        }
+    }
+    @include maxWidth(767px) {
+        &-arrow {
+            display: none;
+        }
+        &-slider {
+            transform: translateX(0) !important;
+            min-width: 100%;
+            @include touchSlider(100%);
+        }
+        &-content {
+            display: grid;
+            grid-auto-columns: 100%;
+            padding: 0;
+            grid-gap: 15px 0;
+            // max-width: 345px;
+            &:first-child,
+            &:last-child {
+                display: none;
+            }
+        }
+        &-icon {
+            @include size(10rem, 10rem);
+            img {
+                width: 100%;
+            }
+        }
+        &-info {
+            padding-left: 0;
+        }
+        &-desc {
+            width: 100%;
+            padding: 0;
+            font-size: 1.6rem;
+        }
+        &-quote {
+            font-size: 2.4rem;
+        }
+    }
+}

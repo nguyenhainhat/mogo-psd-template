@@ -1,0 +1,24 @@
+.device {
+    padding-top: 11rem;
+    background: linear-gradient(to bottom, rgba(#fff, 0.5), rgba(#fff, 0.5)),
+        url("../images/img-device-bg.png")
+        no-repeat center / cover;
+    &-img {
+        margin: 0 auto -9.3rem;
+        display: inline-block;
+        @include positionCenter("left", relative)
+    }
+    @include maxWidth(767px) {
+        padding-top: 5rem;
+        &-img {
+            max-width: 80%;
+            margin-bottom: -4.6rem;
+        }
+    }
+    @include maxWidth(413px) {
+        &-img {
+            max-width: 80%;
+            margin-bottom: -4.2rem;
+        }
+    }
+}
