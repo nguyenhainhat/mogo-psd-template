@@ -16,9 +16,29 @@
 //   });
 // });
 
-const menuToggle = document.querySelector(".header-toggle");
-const menuHeader = document.querySelector(".header-menu")
+const select = (elm, block = document) => {
+    return block.querySelector(elm)
+}
+
+const selectAll = (elm, block = document) => {
+    return block.querySelectorAll(elm)
+}
+
+// header
+const menuToggle = select(".header-toggle");
+const menuHeader = select(".header-menu")
+const navbarHeader = select(".header-navbar")
+const scrollNavbarClass = "header-scroll"
 const expandClass = "is-expand"
+
+window.addEventListener("scroll", () => {
+    if (scrollY > navbarHeader.clientHeight / 5) {
+        navbarHeader.classList.add(scrollNavbarClass)
+    }
+    else {
+        navbarHeader.classList.remove(scrollNavbarClass)
+    }
+})
 
 menuToggle.addEventListener("click", () => {
     menuHeader.classList.add(expandClass)
@@ -29,10 +49,11 @@ window.addEventListener("click", (e) => {
     }
 })
 
-const btnQuoteLeft = document.querySelector(".quote-arrow-left")
-const btnQuoteRight = document.querySelector(".quote-arrow-right")
-const quoteContent = document.querySelectorAll(".quote-content")
-const quoteSlider = document.querySelector(".quote-slider")
+// slider quote
+const btnQuoteLeft = select(".quote-arrow-left")
+const btnQuoteRight = select(".quote-arrow-right")
+const quoteContent = selectAll(".quote-content")
+const quoteSlider = select(".quote-slider")
 let counter = 1;
 quoteSlider.style.transform = ("translateX(" + (-counter * 20) + "%)");
 
@@ -62,3 +83,16 @@ quoteSlider.addEventListener("transitionend", () => {
         quoteSlider.style.transition = "none";
     }
 })
+
+// Wedo Click
+const wedoItem = selectAll('.wedo-item');
+const wedoItemInner = select('.wedo-item-inner');
+const wedoItemContent = select('.wedo-item-content');
+const wedoActive = 'wedo-active';
+
+wedoItem.forEach(e => {
+    e.addEventListener("click", () => {
+        e.classList.toggle(wedoActive)
+    })
+})
+

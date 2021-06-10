@@ -19,12 +19,12 @@ mixin bottomItemHeader(data)
             span.header-bottom-number= data.number 
             span.header-bottom-text= data.text
 
-mixin blockSection(data)
+mixin blockSection(caption,title,desc)
     .block-section
-        h3.block-section-caption= data.caption 
-        h2.block-section-heading= data.title 
-        if data.desc
-            p.block-section-desc= data.desc
+        h3.block-section-caption= caption 
+        h2.block-section-heading= title 
+        if desc
+            p.block-section-desc= desc
 
 mixin aboutItem(data) 
     .about-item 
@@ -50,10 +50,7 @@ mixin wedoItem(active = "", img, title, desc)
         .wedo-item-header 
             img(src= img).wedo-item-icon
             h3.wedo-item-title= title 
-            if active == 'is-active'
-                i.fa.fa-angle-down.wedo-item-arrow
-            else 
-                i.fa.fa-angle-up.wedo-item-arrow
+            i.fa.fa-angle-down.wedo-item-arrow
         .wedo-item-inner 
             .wedo-item-content 
                 .wedo-item-text= desc 

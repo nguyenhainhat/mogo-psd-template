@@ -4,9 +4,18 @@
     background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)),
         url("../images/img-header-bg.jpg") no-repeat center / cover;
     color: white;
+    &-navbar {
+        position: fixed;
+        inset: 0;
+        height: 0;
+        padding-bottom: 66px;
+        overflow: hidden;
+        z-index: 99;
+        transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
     &-logo {
         font : {
-            size: clamp(3rem,5vw,4rem);
+            size: clamp(3rem, 5vw, 4rem);
             weight: bold;
         }
         color: white;
@@ -20,13 +29,10 @@
         color: white;
     }
     &-top {
-        position: fixed;
-        right: 0;
-        left: 0;
         display: flex;
         margin: 0 auto;
         max-width: 90%;
-        padding-top: 3rem;
+        padding: 1rem 0;
         justify-content: space-between;
         // canh dòng chữ
         align-items: baseline;
@@ -48,7 +54,7 @@
         &-caption {
             font: {
                 family: $third-font;
-                size: clamp(3rem, 8vw, 7.2rem)
+                size: clamp(3rem, 8vw, 7.2rem);
             }
             margin-bottom: 3rem;
         }
@@ -64,17 +70,39 @@
             &::after {
                 content: "";
                 @include positionCenter();
-                @include size(6.5rem,0.3rem);
+                @include size(6.5rem, 0.3rem);
                 background-color: #fff;
             }
         }
         &-more {
+            position: relative;
             display: inline-block;
             text-transform: uppercase;
             padding: 1rem 3rem;
             border: 4px solid #fff;
-            color: #fff;
+            color: $primary-color;
+            background-color: #fff;
             font-weight: bold;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
+            &:hover {
+                color: #fff;
+                transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                &::after {
+                    @include size(100%, 100%);
+                    border-radius: 0;
+                    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
+            }
+            &::after {
+                content: "";
+                @include positionCenter();
+                @include size(0, 0);
+                border-radius: 50%;
+                z-index: -1;
+                background-color: $primary-color;
+                transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
         }
     }
     &-bottom {
@@ -245,6 +273,26 @@
         }
         .header-bottom-text {
             display: none;
+        }
+    }
+
+    &-scroll {
+        background-color: #fff;
+        height: 66px;
+        padding-bottom: 0;
+        box-shadow: 0 0 10px 0px $primary-color;
+        transition: height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .header-logo {
+            color: $primary-color;
+        }
+        .header-menu {
+            a {
+                color: $primary-color;
+                font-weight: 600;
+            }
+        }
+        .header-toggle {
+            color: $primary-color;
         }
     }
 }
